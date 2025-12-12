@@ -111,15 +111,19 @@ JSESSIONID="ajax:xxxxxx"
 
 ## How do I setup header-based corporate account access?
 
-If you have a corporate connected account you can fix the download issue by using a `headers.txt` as per below.
+If you have a corporate connected account you can fix the download issue (where only frist 2 videos download successfully while others fail with "No video URL found" errors) by using a `headers.txt` as per below.
 
-1. Create a file named `headers.txt` and place it in the folder you want to download your courses to
-2.  Right click on the page and select view source
-    - You can also reach here by using the keyboard combination: `ctrl`+`U`.
-3. Search for `enterpriseProfileHash` using `ctrl`+`F`
-4. `enterpriseProfileHash&quot;:&quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,&quot;` copy the code between the double `&quot;`
-<img src="https://raw.githubusercontent.com/bigmadkev/knowbee-hosting/master/assets/llvd_FindCodeInSourceCode.png" width="auto" height="auto"/>
-5. Open the `headers.txt` file and paste in the values of `x-li-identity` from the above.
+**Important:** Always get the `x-li-identity` value from Developer Tools Network tab, NOT from "View Page Source" to avoid HTML-encoded characters. 
+
+1. Create a file named `headers.txt` and place it in the folder you want to download your courses to.
+2. Open the Developer Tools in your browser:
+   - **Chrome**: Press `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Option+I` (macOS)
+   - **Firefox**: Press `F12` or `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Option+I` (macOS)
+3. Go to the **Network** tab and refresh the page.
+4. Look for any request to `https://www.linkedin.com` in the network requests list.
+5. Click on the request and go to the **Headers** section.
+6. In the **Request Headers** section, find and copy the `x-li-identity` header value.
+7. Open the `headers.txt` file and paste in the values of `x-li-identity` and `User-Agent` as shown below:
 
 ```sh
 x-li-identity=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
