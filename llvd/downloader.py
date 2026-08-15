@@ -70,7 +70,7 @@ def download_video(url, index, filename, path, delay=None, proxies=None):
 
 def download_subtitles(index, subs, video_name, path, video_duration):
     """Write to a file (subtitle file) caption matching the right time."""
-    with open(f"{path}/{index:0=2d}. {clean_name(video_name).strip()}.srt", "wb") as f:
+    with open(f"{path}/{index:02d} {clean_name(video_name).strip()}.srt", "wb") as f:
         click.echo("Downloading subtitles..")
         for i, sub in enumerate(subs, start=1):
             starts_at = sub["transcriptStartAt"]
